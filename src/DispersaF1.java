@@ -3,6 +3,8 @@
  * and open the template in the editor.
  */
 import java.awt.*;
+
+import javax.swing.JOptionPane;
 public class DispersaF1
 {
     private int Mat[][];
@@ -61,7 +63,6 @@ public class DispersaF1
                 c = c+ saltoC;
             }
             f=f+saltoF;
-
         }
     }
     public void redimensionar( int x)
@@ -151,4 +152,28 @@ public class DispersaF1
 
     }
 
+    public void promedioPares(Graphics g1) {
+        double promedio = 0;
+        for (int i = 1; i < N-1; i++) {
+            if (Mat[i][2] % 2 == 0) {
+                promedio += Mat[i][2];
+                resaltarCelda(g1, i, 2);
+            }
+        }
+        promedio /= Mat[0][2];
+        JOptionPane.showMessageDialog(null, promedio);
+    }
+
+    public void resaltarCelda(Graphics g, int fila, int columna) {
+        int f = 40 + (fila + 1) * 30; // Ajustar la coordenada Y de la fila a resaltar
+        int c = 50 + columna * 40; // Ajustar la coordenada X de la columna a resaltar
+    
+        // Dibujar la celda resaltada
+        g.setColor(Color.green); // Cambiar color a verde (por ejemplo)
+        g.fillRect(c, f, 40, 30); // Dibujar el rectángulo de la celda resaltada
+        g.setColor(Color.blue);
+        g.drawRect(c, f, 40, 30); // Dibujar el borde de la celda
+        g.setColor(Color.black);
+        g.drawString(""+ Mat[fila][columna], c+10, f+20); // Dibujar el contenido de la celda
+    }
 }
