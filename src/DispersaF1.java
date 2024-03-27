@@ -3,8 +3,10 @@
  * and open the template in the editor.
  */
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.List;
 
 import javax.swing.JOptionPane;
 public class DispersaF1
@@ -209,5 +211,51 @@ public class DispersaF1
             str += "Promedio columna " + ant + ": " + prom + "\n";
         }
         JOptionPane.showMessageDialog(null, str);
+    }
+    
+    public void mayPromFilas() {
+        String str = "";
+        int ant = Mat[1][0], cont = 0, j = 0;
+        double prom = 0;
+        double[][] promList = new double[N][2];
+        for (int i = 1; i < N; i++) {
+            if (Mat[i][0] == ant) {
+                cont++;
+                prom += Mat[i][2];
+            } else {
+                prom /= cont;
+                promList[j][0] = ant;
+                promList[j][1] = prom;
+                j++;
+                cont = 1;
+                prom = Mat[i][2];
+                ant = Mat[i][0];
+            }
+        }
+        ordenarMayMen(promList);
+
+        for (int i = 0; i < promList.length; i++) {
+            if (promList[i][1] != 0) {
+                str += "Fila " + promList[i][0] + ". Promedio: " + promList[i][1] + "\n";
+            }
+        }
+        JOptionPane.showMessageDialog(null, str);
+        
+    }
+
+    private void ordenarMayMen(double[][] list) {
+        double[][] aux = new double[N][2];
+        for (int i = 0; i < list.length; i++) {
+            for (int j = i + 1; j < list.length; j++) {
+                if (list[j][1] > list[i][1]) {
+                    aux[i][0] = list[j][0];
+                    aux[i][1] = list[j][1];
+                    list[j][0] = list[i][0];
+                    list[j][1] = list[i][1];
+                    list[i][0] = aux[i][0];
+                    list[i][1] = aux[i][1];
+                }
+            }
+        }
     }
 }
