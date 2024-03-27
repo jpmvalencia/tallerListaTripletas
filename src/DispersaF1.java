@@ -3,6 +3,8 @@
  * and open the template in the editor.
  */
 import java.awt.*;
+import java.util.Arrays;
+import java.util.Comparator;
 
 import javax.swing.JOptionPane;
 public class DispersaF1
@@ -175,5 +177,37 @@ public class DispersaF1
         g.drawRect(c, f, 40, 30); // Dibujar el borde de la celda
         g.setColor(Color.black);
         g.drawString(""+ Mat[fila][columna], c+10, f+20); // Dibujar el contenido de la celda
+    }
+    
+    public void promedioPorColumna() {
+        String str = "";
+        int ant, cont = 0;
+        double prom = 0;
+        // Copia de matriz
+        int[][] copMat = new int[N - 2][3];
+        for (int i = 0; i < N - 2; i++) {
+            copMat[i] = Mat[i+1].clone();
+        }
+        Arrays.sort(copMat, Comparator.comparingInt(arr -> arr[1]));
+
+        ant = copMat[0][1];
+
+        for (int[] row : copMat) {
+            if (row[1] != ant && cont > 0) {
+                prom /= cont;
+                str += "Promedio columna " + ant + ": " + prom + "\n";
+                prom = 0;
+                cont = 0;
+            }
+            prom += row[2];
+            cont++;
+            ant = row[1];
+        }
+
+        if (cont > 0) {
+            prom /= cont;
+            str += "Promedio columna " + ant + ": " + prom + "\n";
+        }
+        JOptionPane.showMessageDialog(null, str);
     }
 }
