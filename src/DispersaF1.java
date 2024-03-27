@@ -256,4 +256,31 @@ public class DispersaF1
             }
         }
     }
+
+    public void eliminarDato(int f, int c) {
+        int i = 1, j;
+        while (i < Mat[0][2] + 1 && Mat[i][0] < f) {
+            i = i + 1;
+        }
+        while (i < Mat[0][2] + 1 && Mat[i][0] == f && Mat[i][1] < c) {
+            i = i + 1;
+        }
+        if (Mat[i][0] != f || Mat[i][1] != c) {
+            JOptionPane.showMessageDialog(null, "No hay dato en la posición indicada.");
+            return;
+        }
+        if (i < Mat[0][2] + 1 && Mat[i][0] == f && Mat[i][1] == c) {
+            Mat[i][2] = 0;
+            if (Mat[i][2] == 0) {
+                for (int k = i + 1; k < Mat[0][2] + 1; k++) {
+                    Mat[k - 1][0] = Mat[k][0];
+                    Mat[k - 1][1] = Mat[k][1];
+                    Mat[k - 1][2] = Mat[k][2];
+                }
+                Mat[0][2] = Mat[0][2] - 1;
+    
+                redimensionar(-1);
+            }
+        }
+    }
 }
