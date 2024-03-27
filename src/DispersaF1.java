@@ -6,6 +6,7 @@ import java.awt.*;
 import java.util.Arrays;
 import java.util.Comparator;
 
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 public class DispersaF1
 {
@@ -163,7 +164,10 @@ public class DispersaF1
             }
         }
         promedio /= Mat[0][2];
-        JOptionPane.showMessageDialog(null, promedio);
+        JOptionPane optionPane = new JOptionPane(promedio, JOptionPane.INFORMATION_MESSAGE);
+        JDialog dialog = optionPane.createDialog(null, "Mensaje");
+        dialog.setAlwaysOnTop(true);
+        dialog.setVisible(true);
     }
 
     public void resaltarCelda(Graphics g, int fila, int columna) {
@@ -208,7 +212,10 @@ public class DispersaF1
             prom /= cont;
             str += "Promedio columna " + ant + ": " + prom + "\n";
         }
-        JOptionPane.showMessageDialog(null, str);
+        JOptionPane optionPane = new JOptionPane(str, JOptionPane.INFORMATION_MESSAGE);
+        JDialog dialog = optionPane.createDialog(null, "Mensaje");
+        dialog.setAlwaysOnTop(true);
+        dialog.setVisible(true);
     }
     
     public void mayPromFilas() {
@@ -237,8 +244,10 @@ public class DispersaF1
                 str += "Fila " + promList[i][0] + ". Promedio: " + promList[i][1] + "\n";
             }
         }
-        JOptionPane.showMessageDialog(null, str);
-        
+        JOptionPane optionPane = new JOptionPane(str, JOptionPane.INFORMATION_MESSAGE);
+        JDialog dialog = optionPane.createDialog(null, "Mensaje");
+        dialog.setAlwaysOnTop(true);
+        dialog.setVisible(true);
     }
 
     private void ordenarMayMen(double[][] list) {
@@ -266,7 +275,10 @@ public class DispersaF1
             i = i + 1;
         }
         if (Mat[i][0] != f || Mat[i][1] != c) {
-            JOptionPane.showMessageDialog(null, "No hay dato en la posición indicada.");
+            JOptionPane optionPane = new JOptionPane("No hay dato en la posición indicada.", JOptionPane.INFORMATION_MESSAGE);
+            JDialog dialog = optionPane.createDialog(null, "Mensaje");
+            dialog.setAlwaysOnTop(true);
+            dialog.setVisible(true);
             return;
         }
         if (i < Mat[0][2] + 1 && Mat[i][0] == f && Mat[i][1] == c) {
