@@ -426,7 +426,10 @@ public class FormDispersaF1 extends javax.swing.JFrame  implements ChangeListene
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // Por hacer
+        DialogEliminarDatos x = new DialogEliminarDatos( this, true, dispersaF1);
+        x.setLocation(600, 50);
+        x.setVisible(true);
+        repaint();
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
