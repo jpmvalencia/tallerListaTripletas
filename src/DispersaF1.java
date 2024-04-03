@@ -295,4 +295,10 @@ public class DispersaF1
             }
         }
     }
+    //punto11-Mostrar cada digito y las veces que se presenta en la matriz, ordenados por las veces que se presenta.
+    //punto12- mostrar cada dato de la matriz y las veces que se presenta ( no repetir mensajes).
+    //punto13-Pintar los datos de una columna dada.
+    //punto14-Pintar los datos de una fila dada.
+    //punto15-Mostrar las veces que se presenta el dato mayor de la matriz( pintarlos)
+
 }
