@@ -8,4 +8,5 @@ public class ProyectoDispersaF1 {
         x = new FormDispersaF1();
         x.setVisible( true);
     }
+    
 }
