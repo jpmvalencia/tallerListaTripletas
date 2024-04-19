@@ -490,4 +490,27 @@ public class DispersaF1 {
             }
         }
     }
+    //punto11-Mostrar cada digito y las veces que se presenta en la matriz, ordenados por las veces que se presenta.
+    
+    //punto12- mostrar cada dato de la matriz y las veces que se presenta ( no repetir mensajes).
+    //punto13-Pintar los datos de una columna dada.
+    public void pintarColumna (int c){
+        
+        
+        
+    }
+    //punto14-Pintar los datos de una fila dada.
+    public void pintarFila (int f){
+        int i = 1;
+        while (i < Mat[0][2]) {
+            
+            if (Mat[i][1] == f){
+                
+            }
+            i = i + 1;
+        }
+
+    }
+    //punto15-Mostrar las veces que se presenta el dato mayor de la matriz( pintarlos)
+
 }
