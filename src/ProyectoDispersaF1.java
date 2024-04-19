@@ -1,5 +1,4 @@
 public class ProyectoDispersaF1 {
-
     /**
      * @param args the command line arguments
      */
@@ -8,5 +7,4 @@ public class ProyectoDispersaF1 {
         x = new FormDispersaF1();
         x.setVisible( true);
     }
-    
 }

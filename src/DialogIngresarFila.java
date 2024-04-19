@@ -89,11 +89,25 @@ public class DialogIngresarFila extends javax.swing.JDialog{
 
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        dispersaF1.pintarFila(jComboBox1.getSelectedIndex()  +1);
-        dispose();
+    private int filaSeleccionada = -1; // Valor predeterminado que indica que no se ha seleccionado ninguna columna
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    // Otros métodos y constructores de la clase
+
+    public int getFilaSeleccionada() {
+        return filaSeleccionada;
+    }
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        //dispersaF1.pintarColumna( jComboBox2.getSelectedIndex()+1);
+        filaSeleccionada = jComboBox1.getSelectedIndex() + 1;
+        //dispersaF1.pintarColumna(columnaSeleccionada);
+        dispersaF1.pintarFila(getGraphics(), filaSeleccionada);
+        dispose();
+        
+    }
+    
+
+    //GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
