@@ -10,13 +10,22 @@ public class FormDispersaF1 extends javax.swing.JFrame  implements ChangeListene
     public FormDispersaF1() {
         initComponents();
         jScrollPane1.getViewport().addChangeListener(this);
+        dispersaF1 = new DispersaF1(6,10);
+        dispersaF1.insetarDato(1, 1, 20);
+        dispersaF1.insetarDato(2,5, 30);
+        dispersaF1.insetarDato(2, 1, 40);
+        dispersaF1.insetarDato(5,5, 40);
+        dispersaF1.insetarDato(1, 3, 20);
+        dispersaF1.insetarDato(2,6, 30);
+        dispersaF1.insetarDato(6, 8, 7);
+        dispersaF1.insetarDato(5,9, 4);
+/*
         dispersaF1 = new DispersaF1(2,2);
         dispersaF1.insetarDato(1, 1, 124);
         dispersaF1.insetarDato(1,2, 40);
         dispersaF1.insetarDato(2, 1, 20);
         dispersaF1.insetarDato(2,2, 7);
-        
-       
+*/
     }
     public void stateChanged(ChangeEvent g)
     {
@@ -406,7 +415,7 @@ public class FormDispersaF1 extends javax.swing.JFrame  implements ChangeListene
         x.setVisible(true);
         repaint();
     }//GEN-LAST:event_jButton3ActionPerformed
-
+    //mostrar promedio de pares
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         Graphics g1 = jScrollPane1.getViewport().getGraphics();
         dispersaF1.promedioPares(g1);
@@ -470,27 +479,46 @@ public class FormDispersaF1 extends javax.swing.JFrame  implements ChangeListene
     }//GEN-LAST:event_jButton14ActionPerformed
 
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
-        // Por hacer
-    }//GEN-LAST:event_jButton15ActionPerformed
+        // punto 12
+            Graphics g1 = jScrollPane1.getViewport().getGraphics();
+            dispersaF1.conteoDatos(g1);
+            repaint();
+        
+    }
 
     private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
         //pintar columna
+        
         DialogIngresarColumna x = new DialogIngresarColumna( this, true, dispersaF1);
         x.setLocation(600, 50);
         x.setVisible(true);
+        int columnaSeleccionada = x.getColumnaSeleccionada(); // Obtener la columna seleccionada
+        Graphics g1 = jScrollPane1.getViewport().getGraphics();
+        dispersaF1.pintarColumna(g1, columnaSeleccionada); // Llamar a pintarColumna con la columna seleccionada
         repaint();
-    }//GEN-LAST:event_jButton16ActionPerformed
+    }
 
     private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
         // pintar fila
         DialogIngresarFila x = new DialogIngresarFila( this, true, dispersaF1);
         x.setLocation(600, 50);
         x.setVisible(true);
+
+        int filaSeleccionada = x.getFilaSeleccionada(); // Obtener la columna seleccionada
+        Graphics g4 = jScrollPane1.getViewport().getGraphics();
+        dispersaF1.pintarFila(g4, filaSeleccionada); // Llamar a pintarColumna con la columna seleccionada
         repaint();
+        
     }//GEN-LAST:event_jButton17ActionPerformed
 
     private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
-        // Por hacer
+        // contador de dato mayor
+        Graphics g1 = jScrollPane1.getViewport().getGraphics();
+        dispersaF1.mostrarDatoMayor(g1);
+        repaint();
+
+
+
     }//GEN-LAST:event_jButton18ActionPerformed
 
 

@@ -3,12 +3,12 @@
  * and open the template in the editor.
  */
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
-
 public class DispersaF1 {
 
     private int Mat[][];
@@ -63,7 +63,7 @@ public class DispersaF1 {
             f = f + saltoF;
         }
     }
-
+  
     public void redimensionar(int x) {
         int aux[][];
         if (x > 0) {
@@ -462,7 +462,7 @@ public class DispersaF1 {
     }
 
     public void eliminarDato(int f, int c) {
-        int i = 1, j;
+        int i = 1;
         while (i < Mat[0][2] + 1 && Mat[i][0] < f) {
             i = i + 1;
         }
@@ -490,27 +490,115 @@ public class DispersaF1 {
             }
         }
     }
-    //punto11-Mostrar cada digito y las veces que se presenta en la matriz, ordenados por las veces que se presenta.
     
-    //punto12- mostrar cada dato de la matriz y las veces que se presenta ( no repetir mensajes).
-    //punto13-Pintar los datos de una columna dada.
-    public void pintarColumna (int c){
-        
-        
-        
-    }
-    //punto14-Pintar los datos de una fila dada.
-    public void pintarFila (int f){
-        int i = 1;
-        while (i < Mat[0][2]) {
-            
-            if (Mat[i][1] == f){
-                
-            }
-            i = i + 1;
-        }
+    
+    //---------------------------punto11-Mostrar cada digito y las veces que se presenta en la matriz, ordenados por las veces que se presenta.
+    
 
+    
+    //------------------------------punto12- mostrar cada dato de la matriz y las veces que se presenta ( no repetir mensajes).
+
+    public void conteoDatos(Graphics g){
+    ArrayList<Integer> datosUnicos = new ArrayList<>();
+    ArrayList<Integer> frecuencias = new ArrayList<>();   
+    
+    for (int i = 1; i < Mat[0][2] + 1; i++) {
+        int dato = Mat[i][2];
+        int indice = datosUnicos.indexOf(dato);
+
+        if (indice != -1) {
+            // Si el dato ya está en la lista, incrementar su frecuencia
+            frecuencias.set(indice, frecuencias.get(indice) + 1);
+        } else {
+            datosUnicos.add(dato);
+            frecuencias.add(1);
+        }
     }
-    //punto15-Mostrar las veces que se presenta el dato mayor de la matriz( pintarlos)
+
+    // Mostrar los datos y sus frecuencias
+    StringBuilder mensaje = new StringBuilder("Datos y sus frecuencias:\n");
+    for (int i = 0; i < datosUnicos.size(); i++) {
+        mensaje.append("Dato: ").append(datosUnicos.get(i)).append(", Frecuencia: ").append(frecuencias.get(i)).append("\n");
+    }
+
+    // Mostrar el mensaje
+    JOptionPane optionPane = new JOptionPane(mensaje.toString(), JOptionPane.INFORMATION_MESSAGE);
+    JDialog dialog = optionPane.createDialog(null, "Frecuencias de datos");
+    dialog.setAlwaysOnTop(true);
+    dialog.setVisible(true);
+    
+}
+    //----------------------------------pintar datos de una columna dada
+    public void pintarColumna(Graphics g, int columnaSeleccionada) {
+    for (int i = 1; i < N-1; i++) {
+        // Mat[i][0] es la fila, Mat[i][1] es la columna
+        if (Mat[i][1] == columnaSeleccionada) {
+            // Resaltar la celda en la fila Mat[i][0] y la columna Mat[i][1]
+            resaltarCelda(g, i, 2);
+        }
+    }
+    String mensaje = "Se han resaltado los datos de la columna " + columnaSeleccionada;
+    JOptionPane optionPane = new JOptionPane(mensaje, JOptionPane.INFORMATION_MESSAGE);
+    JDialog dialog = optionPane.createDialog(null, "Mensaje");
+    dialog.setAlwaysOnTop(true);
+    dialog.setVisible(true);
+    }
+    //---------------------------------punto14-Pintar los datos de una fila dada.
+    public void pintarFila(Graphics g4, int filaSeleccionada){
+        // Comenzamos desde 1 porque la primera fila (índice 0) contiene metadatos de la matriz
+        for (int i = 1; i < N-1; i++) {
+            // Mat[i][0] es la fila, Mat[i][1] es la columna
+            if (Mat[i][0] == filaSeleccionada) {
+                // Resaltar la celda en la fila Mat[i][0] y la columna Mat[i][1]
+                resaltarCelda(g4, i, 2);
+            }
+        }
+        String mensaje = "Se han resaltado los datos de la fila dada";
+        JOptionPane optionPane = new JOptionPane(mensaje,JOptionPane.INFORMATION_MESSAGE);
+        JDialog dialog = optionPane.createDialog(null, "Mensaje");
+        dialog.setAlwaysOnTop(true);
+        dialog.setVisible(true);
+    }
+    //----------------------------------punto15-Mostrar las veces que se presenta el dato mayor de la matriz( pintarlos)
+
+    private int encontrarDatoMayor() {
+        int datoMayor = Mat[1][2];
+        for (int i = 1; i < Mat[0][2] + 1; i++) {
+            if (Mat[i][2] > datoMayor) {
+                datoMayor = Mat[i][2];
+            }
+        }
+        return datoMayor;
+    }
+    
+    private int contarDatoMay(int dato) {
+        int contador = 0;
+        for (int i = 1; i < Mat[0][2] + 1; i++) {
+            if (Mat[i][2] == dato) {
+                contador++;
+            }
+        }
+        return contador;
+    }
+
+    public void mostrarDatoMayor(Graphics g) {
+        int datoMayor = encontrarDatoMayor();
+
+        for (int i = 1; i < Mat[0][2] + 1; i++) {
+            if (Mat[i][2] == datoMayor) {
+                resaltarCelda(g, i, 2);}
+        }
+        String mensaje = "Dato may:" + datoMayor + "conteo:" + contarDatoMay(datoMayor);
+        JOptionPane optionPane = new JOptionPane(mensaje, JOptionPane.INFORMATION_MESSAGE);
+        JDialog dialog = optionPane.createDialog(null, "Mensaje");
+        dialog.setAlwaysOnTop(true);
+        dialog.setVisible(true);
+    }
+
+
+
+
+
+
 
 }

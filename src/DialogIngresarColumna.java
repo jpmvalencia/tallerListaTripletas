@@ -82,8 +82,19 @@ public class DialogIngresarColumna extends javax.swing.JDialog{
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private int columnaSeleccionada = -1; // Valor predeterminado que indica que no se ha seleccionado ninguna columna
+
+    // Otros métodos y constructores de la clase
+
+    public int getColumnaSeleccionada() {
+        return columnaSeleccionada;
+    }
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        dispersaF1.pintarColumna( jComboBox2.getSelectedIndex()+1);
+        //dispersaF1.pintarColumna( jComboBox2.getSelectedIndex()+1);
+        columnaSeleccionada = jComboBox2.getSelectedIndex() + 1;
+        //dispersaF1.pintarColumna(columnaSeleccionada);
+        dispersaF1.pintarFila(getGraphics(), columnaSeleccionada);
         dispose();
 
     }//GEN-LAST:event_jButton1ActionPerformed
