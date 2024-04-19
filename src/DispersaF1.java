@@ -10,6 +10,7 @@ import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 public class DispersaF1
 {
+    
     private int Mat[][];
     private int N , M;
     public DispersaF1(int n, int m)
@@ -68,6 +69,7 @@ public class DispersaF1
             f=f+saltoF;
         }
     }
+   
     public void redimensionar( int x)
     {
         int aux[][];
@@ -102,8 +104,6 @@ public class DispersaF1
         }
 
     }
-
-
 
     public void insetarDato( int f, int c, int d )
     {
@@ -267,7 +267,7 @@ public class DispersaF1
     }
 
     public void eliminarDato(int f, int c) {
-        int i = 1, j;
+        int i = 1;
         while (i < Mat[0][2] + 1 && Mat[i][0] < f) {
             i = i + 1;
         }
@@ -295,14 +295,51 @@ public class DispersaF1
             }
         }
     }
+    
+    
     //punto11-Mostrar cada digito y las veces que se presenta en la matriz, ordenados por las veces que se presenta.
     
     //punto12- mostrar cada dato de la matriz y las veces que se presenta ( no repetir mensajes).
-    //punto13-Pintar los datos de una columna dada.
-    public void pintarColumna (int c){
+    public void conteoDatos(Graphics g, int f, int c){
+        for (int i = 0; i < Mat.length; i++) {
+            for (int j = 0; j < Mat[i].length; j++) {
 
+            }
+        
+        }
+    
+}
+    //pintar datos de una columna dada
+    public void pintarColumna(Graphics g, int columnaSeleccionada) {
+    for (int i = 1; i < N-1; i++) {
+        // Mat[i][0] es la fila, Mat[i][1] es la columna
+        if (Mat[i][1] == columnaSeleccionada) {
+            // Resaltar la celda en la fila Mat[i][0] y la columna Mat[i][1]
+            resaltarCelda(g, i, 2);
+        }
+    }
+    String mensaje = "Se han resaltado los datos de la columna " + columnaSeleccionada;
+    JOptionPane optionPane = new JOptionPane(mensaje, JOptionPane.INFORMATION_MESSAGE);
+    JDialog dialog = optionPane.createDialog(null, "Mensaje");
+    dialog.setAlwaysOnTop(true);
+    dialog.setVisible(true);
     }
     //punto14-Pintar los datos de una fila dada.
+    public void pintarFila(Graphics g4, int filaSeleccionada){
+        // Comenzamos desde 1 porque la primera fila (índice 0) contiene metadatos de la matriz
+        for (int i = 1; i < N-1; i++) {
+            // Mat[i][0] es la fila, Mat[i][1] es la columna
+            if (Mat[i][0] == 2) {
+                // Resaltar la celda en la fila Mat[i][0] y la columna Mat[i][1]
+                resaltarCelda(g4, i, 2);
+            }
+        }
+        String mensaje = "Se han resaltado los datos de la fila dada";
+        JOptionPane optionPane = new JOptionPane(mensaje,JOptionPane.INFORMATION_MESSAGE);
+        JDialog dialog = optionPane.createDialog(null, "Mensaje");
+        dialog.setAlwaysOnTop(true);
+        dialog.setVisible(true);
+    }
     //punto15-Mostrar las veces que se presenta el dato mayor de la matriz( pintarlos)
 
 }
