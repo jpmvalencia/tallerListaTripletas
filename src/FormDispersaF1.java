@@ -12,7 +12,7 @@ public class FormDispersaF1 extends javax.swing.JFrame  implements ChangeListene
         dispersaF1 = new DispersaF1(6,10);
         dispersaF1.insetarDato(1, 1, 20);
         dispersaF1.insetarDato(2,5, 30);
-        dispersaF1.insetarDato(2, 1, 70);
+        dispersaF1.insetarDato(2, 1, 40);
         dispersaF1.insetarDato(5,5, 40);
         dispersaF1.insetarDato(1, 3, 20);
         dispersaF1.insetarDato(2,6, 30);
@@ -464,7 +464,11 @@ public class FormDispersaF1 extends javax.swing.JFrame  implements ChangeListene
     }//GEN-LAST:event_jButton14ActionPerformed
 
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
-        // Por hacer
+        // punto 12
+            Graphics g1 = jScrollPane1.getViewport().getGraphics();
+            dispersaF1.conteoDatos(g1);
+            repaint();
+        
     }
 
     private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
@@ -485,7 +489,6 @@ public class FormDispersaF1 extends javax.swing.JFrame  implements ChangeListene
         x.setLocation(600, 50);
         x.setVisible(true);
 
-        
         int filaSeleccionada = x.getFilaSeleccionada(); // Obtener la columna seleccionada
         Graphics g4 = jScrollPane1.getViewport().getGraphics();
         dispersaF1.pintarFila(g4, filaSeleccionada); // Llamar a pintarColumna con la columna seleccionada
@@ -494,7 +497,13 @@ public class FormDispersaF1 extends javax.swing.JFrame  implements ChangeListene
     }//GEN-LAST:event_jButton17ActionPerformed
 
     private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
-        // Por hacer
+        // contador de dato mayor
+        Graphics g1 = jScrollPane1.getViewport().getGraphics();
+        dispersaF1.mostrarDatoMayor(g1);
+        repaint();
+
+
+
     }//GEN-LAST:event_jButton18ActionPerformed
 
 
