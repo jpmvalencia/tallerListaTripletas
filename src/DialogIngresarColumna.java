@@ -1,5 +1,3 @@
-import java.awt.Graphics;
-
 public class DialogIngresarColumna extends javax.swing.JDialog{
     DispersaF1 dispersaF1;
     /** Creates new form DialogEliminarDatos */
@@ -39,6 +37,7 @@ public class DialogIngresarColumna extends javax.swing.JDialog{
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("selecciona la columna___________");
+
 
         jButton1.setText("Aceptar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -82,29 +81,18 @@ public class DialogIngresarColumna extends javax.swing.JDialog{
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    private int columnaSeleccionada = -1; // Valor predeterminado que indica que no se ha seleccionado ninguna columna
-
-    // Otros métodos y constructores de la clase
-
-    public int getColumnaSeleccionada() {
-        return columnaSeleccionada;
-    }
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        //dispersaF1.pintarColumna( jComboBox2.getSelectedIndex()+1);
-        columnaSeleccionada = jComboBox2.getSelectedIndex() + 1;
-        //dispersaF1.pintarColumna(columnaSeleccionada);
-        dispersaF1.pintarColumna(getGraphics(), columnaSeleccionada);
+        dispersaF1.pintarColumna( jComboBox2.getSelectedIndex()+1);
         dispose();
-        
 
     }//GEN-LAST:event_jButton1ActionPerformed
-   
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+        
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -121,6 +109,9 @@ public class DialogIngresarColumna extends javax.swing.JDialog{
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(DialogIngresarColumna.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+
+        /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
 
             public void run() {
