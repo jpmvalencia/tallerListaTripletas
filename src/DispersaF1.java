@@ -5,6 +5,7 @@
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
 
 import javax.swing.JDialog;
@@ -299,6 +300,75 @@ public class DispersaF1
     
     
     //---------------------------punto11-Mostrar cada digito y las veces que se presenta en la matriz, ordenados por las veces que se presenta.
+    
+        public void contarFrecuencias(Graphics g1) {
+            ArrayList<Integer> digitos = new ArrayList<>();
+            ArrayList<Integer> frecuencias = new ArrayList<>();
+    
+            // Contar frecuencias
+            for (int i = 0; i < Mat.length; i++) {
+                int dato = Mat[i][2]; // Suponiendo que el tercer valor de la tripleta es el dato
+                int indice = digitos.indexOf(dato);
+    
+                if (indice != -1) {
+                    // Si el dato ya está en la lista, incrementar su frecuencia
+                    frecuencias.set(indice, frecuencias.get(indice) + 1);
+                } else {
+                    digitos.add(dato);
+                    frecuencias.add(1);
+                }
+            }
+    
+            // Ordenar por frecuencia descendente
+            ordenarPorFrecuenciaDescendente(digitos, frecuencias);
+    
+            // Mostrar los resultados
+            mostrarResultados(digitos, frecuencias);
+        }
+    
+        private void ordenarPorFrecuenciaDescendente(ArrayList<Integer> digitos, ArrayList<Integer> frecuencias) {
+            // Ordenar los dígitos y sus frecuencias en orden descendente
+            ArrayList<Integer> indices = new ArrayList<>();
+            for (int i = 0; i < digitos.size(); i++) {
+                indices.add(i);
+            }
+    
+            Collections.sort(indices, new Comparator<Integer>() {
+                @Override
+                public int compare(Integer i1, Integer i2) {
+                    return frecuencias.get(i2) - frecuencias.get(i1);
+                }
+            });
+    
+            // Reordenar digitos y frecuencias según los índices ordenados
+            ArrayList<Integer> digitosOrdenados = new ArrayList<>();
+            ArrayList<Integer> frecuenciasOrdenadas = new ArrayList<>();
+    
+            for (int indice : indices) {
+                digitosOrdenados.add(digitos.get(indice));
+                frecuenciasOrdenadas.add(frecuencias.get(indice));
+            }
+    
+            // Actualizar las listas originales
+            digitos.clear();
+            frecuencias.clear();
+            digitos.addAll(digitosOrdenados);
+            frecuencias.addAll(frecuenciasOrdenadas);
+        }
+    
+        private void mostrarResultados(ArrayList<Integer> digitos, ArrayList<Integer> frecuencias) {
+            // Mostrar los dígitos y sus frecuencias ordenados
+            StringBuilder mensaje = new StringBuilder("Dígitos y sus frecuencias ordenados por frecuencia descendente:\n");
+            for (int i = 0; i < digitos.size(); i++) {
+                mensaje.append("Dígito: ").append(digitos.get(i)).append(", Frecuencia: ").append(frecuencias.get(i)).append("\n");
+            }
+    
+            // Mostrar en un cuadro de diálogo
+            JOptionPane optionPane = new JOptionPane(mensaje.toString(), JOptionPane.INFORMATION_MESSAGE);
+            JDialog dialog = optionPane.createDialog(null, "Frecuencias de dígitos ordenadas");
+            dialog.setAlwaysOnTop(true);
+            dialog.setVisible(true);
+        }
     
 
     

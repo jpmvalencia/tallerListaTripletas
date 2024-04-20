@@ -460,7 +460,17 @@ public class FormDispersaF1 extends javax.swing.JFrame  implements ChangeListene
     }//GEN-LAST:event_jButton13ActionPerformed
     
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
-        // Por hacer
+        // Por hacer mostrarResultados
+        {//GEN-FIRST:event_jButton15ActionPerformed
+        // punto 12
+        Graphics g1 = jScrollPane1.getViewport().getGraphics();
+        dispersaF1.contarFrecuencias(g1);
+        repaint();
+    
+}
+
+
+
     }//GEN-LAST:event_jButton14ActionPerformed
 
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
